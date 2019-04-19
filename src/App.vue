@@ -2,7 +2,7 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
     <br />
-    <input v-model="todo" placeholder="Todo..." v-on:keypress="addTodo" />
+    <input v-model="todo" placeholder="to..." v-on:keypress="addTodo" />
     <div>
       <TodoList
         :list="todos"
@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     addTodo: function() {
-      if (event.which == 13 || event.keyCode == 13) {
+      if ((event.which == 13 || event.keyCode == 13) && this.todo) {
         this.todos.push(this.todo);
         savetoLocal(this.todos);
         this.todo = '';
@@ -58,7 +58,7 @@ body {
   height: 100vh;
 }
 input {
-  width: 380px;
+  width: 250px;
   padding: 1rem;
   outline: 0;
   border: none;
